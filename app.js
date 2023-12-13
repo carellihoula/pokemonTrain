@@ -3,12 +3,15 @@ const bodyParser = require('body-parser')
 const favicon = require('serve-favicon')
 const app = express()
 const sequelize = require('./src/db/sequelize')
+const cors = require('cors')
 require('dotenv').config()
+
 
 app
 .use(favicon(__dirname + '/favicon.ico'))
 //.use(morgan('dev')) 
 .use(bodyParser.json())
+.use(cors())
 
 sequelize.initDb()
 

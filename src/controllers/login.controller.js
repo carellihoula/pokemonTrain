@@ -23,7 +23,9 @@ module.exports.login = (req,res) => {
             const token  = jwt.sign(
                 {UserId: user.id},
                 privateKey,
-                {expiresIn: '24h'}
+                {expiresIn: '24h'},
+                function(err, token) {
+                    console.log(token);}
             )
             const message = `vous etes connecté en tant que ${user.username}`
             
